@@ -27,22 +27,19 @@ void Vector2d::print(void)
 	cout << "("+to_string(this->x)+","+to_string(this->y)+")";
 }
 
-void Vector2d::sum(Vector2d Vector2d)
+Vector2d Vector2d::sum(Vector2d vector)
 {
-	this->x += Vector2d.x;
-	this->y += Vector2d.y;
+	return Vector2d(this->x + vector.x, this->y + vector.y);
 }
 
-void Vector2d::sub(Vector2d Vector2d)
+Vector2d Vector2d::sub(Vector2d vector)
 {
-	this->x -= Vector2d.x;
-	this->y -= Vector2d.y;
+	return Vector2d(this->x - vector.x, this->y - vector.y);
 } 
 
-void Vector2d::mult(double number)
+Vector2d Vector2d::mult(double number)
 {
-	this->x *= number;
-	this->y *= number;
+	return Vector2d(this->x * number, this->y * number);
 }
 
 double Vector2d::scalarMult(Vector2d Vector2d)
