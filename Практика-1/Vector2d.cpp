@@ -22,27 +22,54 @@ Vector2d::Vector2d(const Vector2d &Vector2d)
 	this->y = Vector2d.y;
 }
 
-void Vector2d::print(void)
+Vector2d::operator string()
 {
-	cout << "("+to_string(this->x)+","+to_string(this->y)+")";
+	string s = "(" + to_string(this->x) + "," + to_string(this->y) + ")";
+	return s;
 }
 
-Vector2d Vector2d::sum(Vector2d vector)
+Vector2d Vector2d::operator+(const Vector2d& vector) const
 {
-	return Vector2d(this->x + vector.x, this->y + vector.y);
+	return Vector2d(x + vector.x, y + vector.y);
 }
 
-Vector2d Vector2d::sub(Vector2d vector)
+Vector2d Vector2d::operator-(const Vector2d& vector) const
 {
-	return Vector2d(this->x - vector.x, this->y - vector.y);
-} 
-
-Vector2d Vector2d::mult(double number)
-{
-	return Vector2d(this->x * number, this->y * number);
+	return Vector2d(x - vector.x, y - vector.y);
 }
 
-double Vector2d::scalarMult(Vector2d Vector2d)
+double Vector2d::operator*(const Vector2d& vector) const
 {
-	return this->x * Vector2d.x + this->y * Vector2d.y;
+	return x*vector.x+y*vector.y;
+}
+
+Vector2d Vector2d::operator*(double number) const
+{
+	return Vector2d(x * number, y * number);
+}
+
+Vector2d& Vector2d::operator++() {
+	x++;
+	y++;
+	return *this;
+}
+
+Vector2d Vector2d::operator++(int) {
+	Vector2d vector(x, y);
+	x++;
+	y++;
+	return vector;
+}
+
+Vector2d& Vector2d::operator--() {
+	x--;
+	y--;
+	return *this;
+}
+
+Vector2d Vector2d::operator--(int) {
+	Vector2d vector(x, y);
+	x--;
+	y--;
+	return vector;
 }
